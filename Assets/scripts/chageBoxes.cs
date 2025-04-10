@@ -12,6 +12,9 @@ public class chageBoxes : MonoBehaviour, IPointerClickHandler
 
     [SerializeField] GameObject CheckX;
     [SerializeField] GameObject CheckO;
+    [SerializeField] GameObject checkField;
+
+    [SerializeField] public int setIndex;
 
     [SerializeField] Sprite imageX;
     [SerializeField] Sprite imageTick;
@@ -21,17 +24,23 @@ public class chageBoxes : MonoBehaviour, IPointerClickHandler
     {
         if (CheckX.GetComponent<CheckX>().checkTrueOrFalseX == 1)
         {
-            Debug.Log("Õ");
             CheckO.GetComponent<CheckO>().checkTrueOrFalseO = 0;
             CheckX.GetComponent<CheckX>().checkTrueOrFalseX = 0;
             origImg.sprite = imageX;
+            if(GameObject.Find("checkFieldManager").GetComponent<conditionOfWin>().checkGameField.Length > setIndex)
+            {
+                GameObject.Find("checkFieldManager").GetComponent<conditionOfWin>().fullField[setIndex] = "X";
+            }
         }
         else if (CheckO.GetComponent<CheckO>().checkTrueOrFalseO == 0)
         {
-            Debug.Log("Î");
             CheckX.GetComponent<CheckX>().checkTrueOrFalseX = 1;
             CheckO.GetComponent<CheckO>().checkTrueOrFalseO = 1;
             origImg.sprite = imageTick;
+            if (GameObject.Find("checkFieldManager").GetComponent<conditionOfWin>().checkGameField.Length > setIndex)
+            {
+                GameObject.Find("checkFieldManager").GetComponent<conditionOfWin>().fullField[setIndex] = "O";
+            }
         }
     }
 

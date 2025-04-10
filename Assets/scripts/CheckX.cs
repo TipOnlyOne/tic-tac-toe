@@ -9,6 +9,7 @@ public class CheckX : MonoBehaviour, IPointerClickHandler
     [SerializeField] Canvas GetCanvasStart;
     [SerializeField] Canvas GetCanvasBoardGame;
 
+
     public int checkTrueOrFalseX;
 
     public void OnPointerClick(PointerEventData eventData)
